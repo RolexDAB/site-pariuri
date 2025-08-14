@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="pageTitle">Pro Sports Tips - Expert Football Betting Predictions & Analysis</title>
+    <meta name="description" content="Get expert football betting tips, predictions, and analysis. Increase your winning chances with our professional sports tipsters and daily predictions." data-translate="pageDescription">
+    <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <script src="translations.js"></script>
+</head>
+<body onload="initializeLanguage()">
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2 data-translate="navBrand">⚽ SportsTips Pro</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link" data-translate="navHome">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#tips" class="nav-link" data-translate="navTips">Today's Tips</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#leagues" class="nav-link" data-translate="navLeagues">Leagues</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#stats" class="nav-link" data-translate="navStats">Statistics</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link" data-translate="navAbout">About</a>
+                </li>
+                <li class="nav-item language-switcher">
+                    <select id="languageSelect" class="language-select" onchange="setLanguage(this.value)">
+                        <option value="en">🇬🇧 EN</option>
+                        <option value="ro">🇷🇴 RO</option>
+                    </select>
+                </li>
+            </ul>
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="score-ticker" aria-label="Live scores ticker" data-aria-translate="scoresTickerAria">
+            <div class="ticker-track">
+                <div class="ticker-item">ENG • Arsenal 2 - 1 Chelsea • 78'</div>
+                <div class="ticker-item">ESP • Real Madrid 1 - 0 Girona • 56'</div>
+                <div class="ticker-item">ITA • Inter 0 - 0 Juventus • HT</div>
+                <div class="ticker-item">GER • Bayern 3 - 2 Dortmund • 84'</div>
+                <div class="ticker-item">FRA • PSG 2 - 1 Lyon • 65'</div>
+                <div class="ticker-item">TR • Galatasaray 1 - 1 Fenerbahçe • 41'</div>
+            </div>
+        </div>
+        <section id="home" class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title" data-translate="heroTitle">Expert Football Betting Tips</h1>
+                    <p class="hero-description" data-translate="heroDescription">
+                        Get professional football predictions and analysis from our expert tipsters. 
+                        Increase your winning chances with our daily tips and comprehensive statistics.
+                    </p>
+                    <div class="trust-bar" aria-label="Trust indicators">
+                        <div class="trust-item">
+                            <span class="trust-icon">✅</span>
+                            <span data-translate="trustStripVerifiedTips">Verified tips</span>
+                        </div>
+                        <div class="trust-item">
+                            <span class="trust-icon">📊</span>
+                            <span data-translate="trustStripTransparent">Transparent stats</span>
+                        </div>
+                        <div class="trust-item">
+                            <span class="trust-icon">🛡️</span>
+                            <span data-translate="trustStripResponsible">18+ Responsible gambling</span>
+                        </div>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">85%</div>
+                            <div class="stat-label" data-translate="heroWinRate">Win Rate</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">1000+</div>
+                            <div class="stat-label" data-translate="heroClients">Happy Clients</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">5+</div>
+                            <div class="stat-label" data-translate="heroExperience">Years Experience</div>
+                        </div>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="#tips" class="btn btn-primary" data-translate="heroViewTips" onclick="scrollToSection('tips')">View Today's Tips</a>
+                        <a href="#stats" class="btn btn-secondary" data-translate="heroTrackRecord" onclick="scrollToSection('stats')">Our Track Record</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="tips" class="section">
+            <div class="container">
+                <h2 class="section-title" data-translate="tipsTitle">Today's Football Tips</h2>
+
+                <div class="tips-toolbar">
+                    <div class="chips">
+                        <button class="chip active" data-filter="all" data-translate="chipAll">All</button>
+                        <button class="chip" data-filter="high" data-translate="chipHighConfidence">High Confidence</button>
+                        <button class="chip" data-filter="value" data-translate="chipValueBets">Value Bets</button>
+                        <button class="chip" data-filter="live" data-translate="chipLive">Live</button>
+                        <button class="chip" data-filter="upcoming" data-translate="chipUpcoming">Upcoming</button>
+                    </div>
+                    <div class="sort">
+                        <label for="tipsSort" class="sort-label" data-translate="sortBy">Sort by</label>
+                        <select id="tipsSort" class="sort-select">
+                            <option value="confidence" data-translate="sortConfidence">Confidence</option>
+                            <option value="odds" data-translate="sortOdds">Odds</option>
+                            <option value="time" data-translate="sortTime">Kickoff time</option>
+                        </select>
+                    </div>
+                </div>
+
+                
+
+                <div class="tips-grid" id="tipsGrid">
+                    <div class="tip-card sample" data-league="EPL" data-confidence="88" data-ev="12" data-status="upcoming" data-time="15:00" data-odds="1.92">
+                        <div class="tip-header pro">
+                            <div class="match-info">
+                        <div class="teams-row">
+                            <span class="team home" data-translate="teamManUnited">Manchester United</span>
+                            <span class="vs" data-translate="versus">vs</span>
+                            <span class="team away" data-translate="teamLiverpool">Liverpool</span>
+                        </div>
+                                <div class="match-details">
+                                    <span class="league">🏆 <span data-translate="leaguePremierLeague">Premier League</span></span>
+                                    <span class="time">⏰ 15:00 <span data-translate="timeGMT">GMT</span></span>
+                                </div>
+                            </div>
+                            <div class="confidence">
+                                <div class="confidence-badge high">88%</div>
+                                <span data-translate="tipsConfidence">Confidence</span>
+                            </div>
+                        </div>
+                        <div class="tip-tags">
+                            <span class="tag tag-value" data-translate="tagValue">Value +12% EV</span>
+                            <span class="tag tag-market" data-translate="marketOver25Goals">Over 2.5 Goals</span>
+                        </div>
+                        <div class="tip-content">
+                            <div class="prediction">
+                                <span class="bet-type" data-translate="marketOver25Goals">Over 2.5 Goals</span>
+                                <span class="odds">@1.92</span>
+                            </div>
+                            <div class="ev-bar" aria-label="Expected value">
+                                <div class="ev-fill" style="width: 12%"></div>
+                                <div class="ev-label">+12% <span data-translate="evLabel">EV</span></div>
+                            </div>
+                            <p class="analysis" data-translate="sampleAnalysis">Strong attacking form and defensive vulnerabilities on both sides. Market drifting slightly in our favor.</p>
+                            <div class="odds-move up" aria-label="Odds movement">▲</div>
+                        </div>
+                        <div class="tip-footer">
+                            <span class="tipster">👨‍💼 <span data-translate="tipsExpert">Expert</span>: J. Smith</span>
+                            <button class="btn btn-primary" data-translate="ctaCopyBetslip">Copy betslip</button>
+                        </div>
+                    </div>
+
+                    <div class="tip-card locked" data-league="LL" data-confidence="72" data-ev="6" data-status="upcoming" data-time="18:30" data-odds="2.05">
+                        <div class="tip-header">
+                            <div class="match-info">
+                                <div class="teams-row">
+                                    <span class="team home" data-translate="teamBarcelona">Barcelona</span>
+                                    <span class="vs" data-translate="versus">vs</span>
+                                    <span class="team away" data-translate="teamRealMadrid">Real Madrid</span>
+                                </div>
+                                <div class="match-details">
+                                    <span class="league">🏆 <span data-translate="leagueLaLiga">La Liga</span></span>
+                                    <span class="time">⏰ 18:30 <span data-translate="timeGMT">GMT</span></span>
+                                </div>
+                            </div>
+                            <div class="confidence">
+                                <div class="confidence-badge medium">72%</div>
+                                <span data-translate="tipsConfidence">Confidence</span>
+                            </div>
+                        </div>
+                        <div class="tip-tags">
+                            <span class="tag tag-value">+6% EV</span>
+                            <span class="tag tag-market" data-translate="marketBTTS">Both Teams To Score</span>
+                            <span class="tag tag-bookie">Unibet</span>
+                        </div>
+                        <div class="tip-content">
+                            <div class="prediction">
+                                <span class="bet-type" data-translate="membersOnly">Members-only</span>
+                                <span class="odds">@—</span>
+                            </div>
+                            <p class="analysis" data-translate="teaserText">Full analysis and exact pick available to members.</p>
+                            <button class="btn btn-primary subscribe-btn" data-translate="subscribeTrial">Start 3‑day trial</button>
+                        </div>
+                        <div class="tip-footer">
+                            <span class="tipster">👨‍💼 <span data-translate="tipsExpert">Expert</span>: ****</span>
+                            <span class="status pending">🟡 <span data-translate="tipsUpcoming">UPCOMING</span></span>
+                        </div>
+                    </div>
+
+                    <div class="tip-card locked" data-league="L1" data-confidence="78" data-ev="9" data-status="live" data-time="20:00" data-odds="1.85">
+                        <div class="tip-header">
+                            <div class="match-info">
+                                <div class="teams-row">
+                                    <span class="team home" data-translate="teamPSG">PSG</span>
+                                    <span class="vs" data-translate="versus">vs</span>
+                                    <span class="team away" data-translate="teamMarseille">Marseille</span>
+                                </div>
+                                <div class="match-details">
+                                    <span class="league">🏆 <span data-translate="leagueLigue1">Ligue 1</span></span>
+                                    <span class="time">⏰ 20:00 <span data-translate="timeGMT">GMT</span></span>
+                                </div>
+                            </div>
+                            <div class="confidence">
+                                <div class="confidence-badge high">78%</div>
+                                <span data-translate="tipsConfidence">Confidence</span>
+                            </div>
+                        </div>
+                        <div class="tip-tags">
+                            <span class="tag tag-value">+9% EV</span>
+                            <span class="tag tag-market" data-translate="marketHomeWin">Home Win</span>
+                            <span class="tag tag-bookie">Pinnacle</span>
+                        </div>
+                        <div class="tip-content">
+                            <div class="prediction">
+                                <span class="bet-type" data-translate="membersOnly">Members-only</span>
+                                <span class="odds">@—</span>
+                            </div>
+                            <p class="analysis" data-translate="teaserText">Full analysis and exact pick available to members.</p>
+                            <button class="btn btn-primary subscribe-btn" data-translate="subscribeTrial">Start 3‑day trial</button>
+                        </div>
+                        <div class="tip-footer">
+                            <span class="tipster">👨‍💼 <span data-translate="tipsExpert">Expert</span>: ****</span>
+                            <span class="status winning">🟢 <span data-translate="tipsLive">LIVE</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tips-cta">
+                    <button class="btn btn-primary" data-translate="subscribeTrial">Start 3‑day trial</button>
+                    <span class="cta-note" data-translate="trialNote">Cancel anytime. See full track record inside.</span>
+                </div>
+
+                <div class="subscription-benefits">
+                    <h3 data-translate="subscriptionBenefits">What You Get With Subscription</h3>
+                    <div class="benefits-grid">
+                        <div class="benefit-item">
+                            <div class="benefit-icon">🎯</div>
+                            <span data-translate="benefitExpertTips">Expert Tips & Analysis</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">📊</div>
+                            <span data-translate="benefitStatistics">Detailed Statistics</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">⚡</div>
+                            <span data-translate="benefitLiveUpdates">Live Updates</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">🏆</div>
+                            <span data-translate="benefitHighWinRate">85%+ Win Rate</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tips-disclaimer">
+                    <p><strong>⚠️ Disclaimer:</strong> <span data-translate="tipsDisclaimer">Betting involves risk. Please gamble responsibly and only bet what you can afford to lose. These tips are for entertainment purposes and do not guarantee winning outcomes.</span></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="leagues" class="section">
+            <div class="container">
+                <h2 class="section-title" data-translate="leaguesTitle">Leagues We Cover</h2>
+                <p class="leagues-description" data-translate="leaguesDescription">
+                    We provide expert analysis and betting tips for the top football leagues across Europe.
+                </p>
+                
+                <div class="leagues-grid">
+                    <div class="league-logo">
+                        <img src="imagini/premier-league-new-logo-png_seeklogo-286461.png" alt="Premier League" title="Premier League - England" />
+                    </div>
+                    <div class="league-logo">
+                        <img src="imagini/laliga-logo-png_seeklogo-490008.png" alt="La Liga" title="La Liga - Spain" />
+                    </div>
+                    <div class="league-logo">
+                        <img src="imagini/Bundesliga_logo_(2017).svg.png" alt="Bundesliga" title="Bundesliga - Germany" />
+                    </div>
+                    <div class="league-logo">
+                        <img src="imagini/serie_a_liga.jfif" alt="Serie A" title="Serie A - Italy" />
+                    </div>
+                    <div class="league-logo">
+                        <img src="imagini/Ligue_1_Uber_Eats_logo.svg.png" alt="Ligue 1" title="Ligue 1 - France" />
+                    </div>
+                    <div class="league-logo">
+                        <img src="imagini/Símbolo_da_Liga_Portuguesa_de_Futebol_Profissional.png" alt="Primeira Liga" title="Primeira Liga - Portugal" />
+                    </div>
+                    <div class="league-logo">
+                        <img src="imagini/Süper_Lig_logo.svg.png" alt="Süper Lig" title="Süper Lig - Turkey" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title" data-translate="testimonialsTitle">What bettors say</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="avatar">🧑‍💼</div>
+                            <div class="meta">
+                                <strong>Alex P.</strong>
+                                <span class="verified">✔ <span data-translate="verifiedLabel">Verified</span></span>
+                            </div>
+                            <div class="rating" aria-label="5 stars">★★★★★</div>
+                        </div>
+                        <p class="testimonial-text" data-translate="testimonial1">"Clear analysis and realistic odds. Consistent results over the last months."</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="avatar">👩‍💼</div>
+                            <div class="meta">
+                                <strong>Monica R.</strong>
+                                <span class="verified">✔ <span data-translate="verifiedLabel">Verified</span></span>
+                            </div>
+                            <div class="rating" aria-label="4 stars">★★★★☆</div>
+                        </div>
+                        <p class="testimonial-text" data-translate="testimonial2">"I like the transparency. The stats match the actual tips history."</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="avatar">🧑‍💻</div>
+                            <div class="meta">
+                                <strong>Daniel C.</strong>
+                                <span class="verified">✔ <span data-translate="verifiedLabel">Verified</span></span>
+                            </div>
+                            <div class="rating" aria-label="5 stars">★★★★★</div>
+                        </div>
+                        <p class="testimonial-text" data-translate="testimonial3">"Responsible approach and good bankroll tips. Feels professional."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="methodology" class="section">
+            <div class="container">
+                <h2 class="section-title" data-translate="methodologyTitle">How our predictions work</h2>
+                <div class="methodology-grid">
+                    <div class="method-card">
+                        <div class="method-icon">📚</div>
+                        <h3 data-translate="methodologyModelTitle">Model</h3>
+                        <p data-translate="methodologyPoint1">Probabilistic models combining form, injuries, xG and market movement.</p>
+                    </div>
+                    <div class="method-card">
+                        <div class="method-icon">🔎</div>
+                        <h3 data-translate="methodologyReviewTitle">Review</h3>
+                        <p data-translate="methodologyPoint2">Human validation by league specialists before publishing.</p>
+                    </div>
+                    <div class="method-card">
+                        <div class="method-icon">🧮</div>
+                        <h3 data-translate="methodologyStakingTitle">Staking</h3>
+                        <p data-translate="methodologyPoint3">Bankroll-friendly staking and clear confidence levels.</p>
+                    </div>
+                    <div class="method-card">
+                        <div class="method-icon">🔁</div>
+                        <h3 data-translate="methodologyTransparencyTitle">Transparency</h3>
+                        <p data-translate="methodologyPoint4">Results logged and visible in monthly performance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="stats" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title" data-translate="statsTitle">Our Track Record</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-value">85.3%</div>
+                        <div class="stat-description" data-translate="statsOverallWinRate">Overall Win Rate</div>
+                        <div class="stat-period" data-translate="statsLast30Days">Last 30 days</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⚽</div>
+                        <div class="stat-value">234</div>
+                        <div class="stat-description" data-translate="statsSuccessfulTips">Successful Tips</div>
+                        <div class="stat-period" data-translate="statsThisMonth">This month</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-value">+127%</div>
+                        <div class="stat-description" data-translate="statsProfitMargin">Profit Margin</div>
+                        <div class="stat-period" data-translate="stats6MonthsROI">6 months ROI</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-value">92%</div>
+                        <div class="stat-description" data-translate="statsHighConfidence">High Confidence Accuracy</div>
+                        <div class="stat-period" data-translate="statsTipsOver80">Tips over 80%</div>
+                    </div>
+                </div>
+                
+                <div class="performance-chart">
+                    <h3 data-translate="statsMonthlyPerformance">Monthly Performance</h3>
+                    <div class="chart-container">
+                        <div class="chart-bars">
+                            <div class="chart-bar" style="height: 85%;" data-month="Jan" data-value="85%"></div>
+                            <div class="chart-bar" style="height: 78%;" data-month="Feb" data-value="78%"></div>
+                            <div class="chart-bar" style="height: 92%;" data-month="Mar" data-value="92%"></div>
+                            <div class="chart-bar" style="height: 88%;" data-month="Apr" data-value="88%"></div>
+                            <div class="chart-bar" style="height: 94%;" data-month="May" data-value="94%"></div>
+                            <div class="chart-bar" style="height: 86%;" data-month="Jun" data-value="86%"></div>
+                        </div>
+                        <div class="chart-labels">
+                            <span data-translate="monthJan">Jan</span>
+                            <span data-translate="monthFeb">Feb</span>
+                            <span data-translate="monthMar">Mar</span>
+                            <span data-translate="monthApr">Apr</span>
+                            <span data-translate="monthMay">May</span>
+                            <span data-translate="monthJun">Jun</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="history" class="section">
+            <div class="container">
+                <h2 class="section-title" data-translate="historyTitle">Recent Results</h2>
+                <div class="history-table-wrap">
+                    <table class="history-table" aria-describedby="history-caption">
+                        <caption id="history-caption" class="visually-hidden" data-translate="historyCaption">Latest published tips and outcomes</caption>
+                        <thead>
+                            <tr>
+                                <th data-translate="historyDate">Date</th>
+                                <th data-translate="historyMatch">Match</th>
+                                <th data-translate="historyBet">Bet</th>
+                                <th data-translate="historyOdds">Odds</th>
+                                <th data-translate="historyResult">Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-label-key="historyDate">2024-06-18</td>
+                                <td data-label-key="historyMatch">Manchester Utd vs Liverpool</td>
+                                <td data-label-key="historyBet">Over 2.5 Goals</td>
+                                <td data-label-key="historyOdds">@1.85</td>
+                                <td data-label-key="historyResult"><span class="badge badge-win" data-translate="historyWin">WIN</span></td>
+                            </tr>
+                            <tr>
+                                <td data-label-key="historyDate">2024-06-18</td>
+                                <td data-label-key="historyMatch">Barcelona vs Sevilla</td>
+                                <td data-label-key="historyBet">Home -1.0 AH</td>
+                                <td data-label-key="historyOdds">@1.92</td>
+                                <td data-label-key="historyResult"><span class="badge badge-loss" data-translate="historyLoss">LOSS</span></td>
+                            </tr>
+                            <tr>
+                                <td data-label-key="historyDate">2024-06-17</td>
+                                <td data-label-key="historyMatch">PSG vs Marseille</td>
+                                <td data-label-key="historyBet">Both Teams To Score</td>
+                                <td data-label-key="historyOdds">@1.80</td>
+                                <td data-label-key="historyResult"><span class="badge badge-win" data-translate="historyWin">WIN</span></td>
+                            </tr>
+                            <tr>
+                                <td data-label-key="historyDate">2024-06-17</td>
+                                <td data-label-key="historyMatch">Bayern vs Leipzig</td>
+                                <td data-label-key="historyBet">Home Win</td>
+                                <td data-label-key="historyOdds">@1.70</td>
+                                <td data-label-key="historyResult"><span class="badge badge-push" data-translate="historyPush">PUSH</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title" data-translate="aboutTitle">About SportsTips Pro</h2>
+                <div class="about-grid">
+                    <div class="about-content">
+                        <p data-translate="aboutDescription">
+                            SportsTips Pro is your trusted source for professional football betting predictions and analysis. 
+                            Our team of expert tipsters combines years of experience with advanced statistical analysis to deliver 
+                            high-quality betting tips that give you the edge you need.
+                        </p>
+                        <ul class="feature-list">
+                            <li data-translate="aboutExpertAnalysis">🏆 Expert Analysis</li>
+                            <li data-translate="aboutStatisticalModels">📊 Statistical Models</li>
+                            <li data-translate="aboutFootballSpecialists">⚽ Football Specialists</li>
+                            <li data-translate="aboutProvenROI">💰 Proven ROI</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="team-section">
+                    <h3 data-translate="aboutOurTeam">Our Expert Team</h3>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="member-avatar">👨‍💼</div>
+                            <h4>John Smith</h4>
+                            <p data-translate="aboutLeadAnalyst">Lead Analyst</p>
+                            <span class="experience">8+ <span data-translate="aboutYearsExperience">years experience</span></span>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar">👩‍💼</div>
+                            <h4>Maria Garcia</h4>
+                            <p data-translate="aboutLaLigaSpecialist">La Liga Specialist</p>
+                            <span class="experience">6+ <span data-translate="aboutYearsExperience">years experience</span></span>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar">👨‍💼</div>
+                            <h4>Pierre Dubois</h4>
+                            <p data-translate="aboutLigue1Expert">Ligue 1 Expert</p>
+                            <span class="experience">5+ <span data-translate="aboutYearsExperience">years experience</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>⚽ SportsTips Pro</h4>
+                    <p data-translate="footerTagline">Your trusted partner for football betting success.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📧</a>
+                        <a href="#" class="social-link">💬</a>
+                        <a href="#" class="social-link">📱</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 data-translate="footerQuickLinks">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#tips" data-translate="navTips">Today's Tips</a></li>
+                        <li><a href="#leagues" data-translate="navLeagues">Leagues</a></li>
+                        <li><a href="#stats" data-translate="navStats">Statistics</a></li>
+                        <li><a href="#about" data-translate="navAbout">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-translate="footerResponsibleGaming">Responsible Gaming</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" data-translate="footerGamblingGuidelines">Gambling Guidelines</a></li>
+                        <li><a href="#" data-translate="footerRiskManagement">Risk Management</a></li>
+                        <li><a href="#" data-translate="footerSelfExclusion">Self-Exclusion</a></li>
+                        <li><a href="#" data-translate="footerSupportResources">Support Resources</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SportsTips Pro. <span data-translate="footerRights">All rights reserved.</span> | <strong data-translate="footerAgeRestriction">18+ Only</strong> | <span data-translate="footerGambleResponsibly">Gamble Responsibly</span></p>
+                <p class="policy-links"><a href="#" data-translate="footerPrivacy">Privacy Policy</a> · <a href="#" data-translate="footerTerms">Terms</a></p>
+                <p class="disclaimer-text" data-translate="footerDisclaimerText">Betting carries financial risk and may be addictive. Please bet responsibly.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent">
+        <div class="cookie-text">
+            <strong data-translate="cookieTitle">We care about your privacy</strong>
+            <span data-translate="cookieText">We use cookies to improve the site and remember your settings. We never sell your data.</span>
+            <a href="#" class="cookie-learn" data-translate="cookieLearnMore">Learn more</a>
+        </div>
+        <button class="btn btn-primary cookie-accept" data-translate="cookieAccept">Accept</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
